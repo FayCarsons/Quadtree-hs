@@ -20,10 +20,10 @@ numClusters :: Int
 numClusters = 12
 
 pointsPerCluster :: Int
-pointsPerCluster = 128
+pointsPerCluster = 96
 
 spread :: Double
-spread = 0.1
+spread = 0.075
 
 resolution :: (Int, Int)
 resolution = (1600, 1600)
@@ -52,13 +52,14 @@ generateClusters numClusters pointsPerCluster spread = do
 draw :: S.Shape -> Cairo.Render ()
 draw (S.Rectangle (P.Point x y) width height) =
   do
-    Cairo.setSourceRGB 0.0 0.0 0.0
+    Cairo.setSourceRGBA 0 0 0 1
     Cairo.rectangle x y width height
     Cairo.stroke
 draw (S.Circle (P.Point x y) radius) =
   do
-    Cairo.setSourceRGB 1.0 0.01 0.01
-    Cairo.arc x y radius 0.0 (2.0 * realToFrac pi)
+    Cairo.setSourceRGBA 1 0.01 0.01 1
+    Cairo.arc x y radius 0.0 (2 * realToFrac pi)
+    Cairo.strokePreserve
     Cairo.fill
 
 main :: IO ()
@@ -70,7 +71,7 @@ main = do
 
   surface <- uncurry (Cairo.createImageSurface Cairo.FORMAT_RGBA128F) resolution
   Cairo.renderWith surface $ do
-    Cairo.setSourceRGB 1.0 1.0 1.0
+    Cairo.setSourceRGB 1 1 1
     Cairo.paint
     mapM_ draw shapes
   Cairo.surfaceWriteToPNG surface outputFileName

@@ -18,7 +18,7 @@ toFlatShapes = convert
       let circles = map circleOfPoint es
           rect = rectOfBB bb
        in circles ++ [rect]
-    circleOfPoint p = Circle p 2
+    circleOfPoint p = Circle p 3
     rectOfBB bb@(Box min max) =
       let (Point cx cy) = midpoint bb
           w = x max - x min
