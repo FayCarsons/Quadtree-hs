@@ -4,4 +4,4 @@ The project can be run with `cabal run`, which will produce a PNG in the root of
 Play around with the constants in the top of `Main.hs` to get different outputs!
 
 An example output:
-[ex](Quadtree-example.png)
+![ex](Quadtree-example.png)
