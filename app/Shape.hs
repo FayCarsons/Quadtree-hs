@@ -1,11 +1,11 @@
 module Shape
-  ( Shape(..),
+  ( Shape (..),
     toFlatShapes,
   )
 where
 
-import Point (Point(..))
-import Tree (Quadtree (..), Box(..), midpoint)
+import Point (Point (..))
+import Tree (Box (..), Quadtree (..), midpoint)
 
 {- Shape type & Quadtree -> [Shape] function for visualization -}
 data Shape = Circle {cc :: Point Double, radius :: Double} | Rectangle {rc :: Point Double, width :: Double, height :: Double}

@@ -1,12 +1,13 @@
 module Tree
-  ( Quadtree(..),
+  ( Quadtree (..),
     build,
-    Box(..),
-    midpoint
+    Box (..),
+    midpoint,
   )
 where
 
-import Point (Point(..), splat, (+~), (/!))
+import Point (Point (..), splat, (+~), (/!))
+
 {- Box type & utilities -}
 data Box = Box
   { min :: Point Double,

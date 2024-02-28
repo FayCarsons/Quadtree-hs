@@ -2,24 +2,22 @@
 
 module Main where
 
-import Control.Applicative (Applicative (liftA2))
 import qualified Control.Monad
 import qualified Control.Monad.State as State
 import GHC.Float (pi)
 import qualified Graphics.Rendering.Cairo as Cairo
-import qualified System.Random as Random
-import Prelude
-import qualified Shape as S
 import qualified Point as P
+import qualified Shape as S
+import qualified System.Random as Random
 import qualified Tree as QT
+import Prelude
 
 {- Constants -}
-
 maxLeafPoints :: Int
 maxLeafPoints = 4
 
 numClusters :: Int
-numClusters = 16
+numClusters = 12
 
 pointsPerCluster :: Int
 pointsPerCluster = 128
@@ -51,7 +49,6 @@ generateClusters numClusters pointsPerCluster spread = do
   mapM (\center -> generateCluster center pointsPerCluster spread) centers
 
 {- Rendering -}
-
 draw :: S.Shape -> Cairo.Render ()
 draw (S.Rectangle (P.Point x y) width height) =
   do
